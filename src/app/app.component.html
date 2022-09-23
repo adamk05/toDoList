@@ -1,0 +1,19 @@
+<div class="title-container">
+  <label class="title">Your ToDoList</label>
+</div>
+<div class="list" *ngFor="let item of toDoList; index as i">
+  <div class="listItem" [class]="item.done ? 'list-item-done' : 'list-item-not-done'">
+    <div class="item-name-container"> <label class="itemName">{{item.title}}</label> </div>
+    <div class="item-done-container">
+      <p-button [icon]="item.done ? 'pi pi-times' : 'pi pi-check'" (onClick)="changeItemStatus(i)"></p-button>
+      <p-button style="margin-left: 6px; margin-right: 12px;" icon="pi pi-trash" (onClick)="deleteItem(i)"></p-button>
+    </div>
+  </div>
+</div>
+
+<div class="add-form">
+  <span style="width: 100%;" class="p-float-label add-item-name">
+    <input type="text" pInputText id="name" name="name" [(ngModel)]="name2add"/>
+  </span>
+  <div class="button-add"> <p-button label="Dodaj" [disabled]="name2add === ''" (onClick)="addTask()"></p-button> </div>
+</div>
